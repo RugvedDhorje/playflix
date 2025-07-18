@@ -8,7 +8,6 @@ export const useReviews = () => {
   const fetchReview = async () => {
     try {
       setLoading(true);
-
       const response = await fetch("/api/reviews");
       if (!response.ok) throw new Error("Failed to fetch reviews");
       const data = await response.json();
