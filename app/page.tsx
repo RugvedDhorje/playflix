@@ -1,9 +1,15 @@
-import Image from "next/image";
+"use client";
+import HomePage from "@/components/HomePage";
+import ProtectedRoute from "@/components/ProtectedRoutes";
+// import { AuthProvider } from "@/context/AuthContext";
+// import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
-      <h1 className="bg-green-300 text-yellow-300">Hello Playflix</h1>
+      <ProtectedRoute>
+        <HomePage />
+      </ProtectedRoute>
     </div>
   );
 }
