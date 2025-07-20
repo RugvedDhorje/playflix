@@ -7,6 +7,8 @@ export interface Video {
   description?: string;
   duration?: number;
   created_at?: string;
+  year?: number;
+  language?: string;
 }
 
 export interface WatchHistoryItem {

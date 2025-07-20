@@ -3,6 +3,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useVideos } from "@/hooks/useVideos";
 import { supabaseAdmin } from "@/utils/supabaseClient";
 import { useEffect, useState } from "react";
+import { Bookmark, Play } from "lucide-react";
 
 interface userProfile {
   id: string;
@@ -14,6 +15,8 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState<userProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const { videos } = useVideos();
+  //   const { review } = useReviewById(Number(videos[1]?.id));
+  //   const [video, setVideo] = useState([]);
   useEffect(() => {
     if (user?.id) {
       fetchUserProfile();
@@ -52,14 +55,16 @@ const HomePage = () => {
     );
   }
   return (
-    <div className=" min-h-screen">
-      <nav className="relative h-[650px] bg-[#0d0f11] shadow overflow-hidden">
+    <div className="min-h-screen bg-[#0d0f11]">
+      <nav className="relative h-[750px] bg-[#0d0f11] shadow overflow-hidden">
         <img
           className="absolute top-0 left-0 w-full h-full object-cover"
-          src="https://res.cloudinary.com/dwh14vxwc/image/upload/v1744520541/company_images/zbtk9akt2lsckafwwakw.png"
+          //   src="https://res.cloudinary.com/dwh14vxwc/image/upload/v1744520541/company_images/zbtk9akt2lsckafwwakw.png"
+          //   src="https://wallpapercave.com/wp/wp8807385.jpg"
+          src="https://nofilmschool.com/media-library/image.jpg?id=58401470&width=980"
           alt=""
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
         <div className=" relative max-w-screen-2xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center w-[200px]">
@@ -80,18 +85,55 @@ const HomePage = () => {
               >
                 SignOut
               </button>
-            </div>{" "}
+            </div>
+          </div>
+          <div className="text-white mt-[200px]">
+            <h1 className="text-white font-bold text-[60px]">
+              {videos[1]?.title}
+            </h1>
+          </div>
+          <div className="text-white flex items-center gap-x-3">
+            {/* <p className="text-white text-[20px]">{review[1]?.id}</p> */}
+            {/* <span className="text-[30px]">•</span> */}
+
+            <p className="font-medium text-[20px]">{videos[1]?.year}</p>
+            <span className="text-[30px]">•</span>
+            <p className="text-[20px] font-medium">{videos[1]?.language}</p>
+            <span className="text-[30px]">•</span>
+            <p className="text-[20px] font-medium">{videos[1]?.duration}</p>
+          </div>
+          <div className="text-white py-4">
+            <p className="text-[20px]">{videos[1]?.description}</p>
+          </div>
+          <div className="flex gap-x-4 text-[20px] font-medium">
+            {videos[1]?.genre_ids?.map((v, index) => (
+              <p key={index} className="text-white">
+                {v} |
+              </p>
+            ))}
+          </div>
+          <div className="flex gap-x-5 py-5">
+            <button className="text-white bg-red-600 rounded-md px-3 py-2 text-[20px] flex items-center justify-center gap-x-1">
+              <Play />
+              PLAY NOW
+            </button>
+            <button className="text-white border-[1px] border-white rounded-md px-3 py-2 flex items-center gap-x-1">
+              <Bookmark /> WATCH LATER
+            </button>
           </div>
         </div>
       </nav>
-      {/* <div>
+      {/* <div> */}
+      {/* <h4 className="text-white text-[26px]">Recommended</h4> */}
+      {/* </div> */}
+      <div className="flex">
         {videos.map((v) => (
-          <div>
-            <p className="text-white">{v.title}</p>
-            <img src={v.thumbnail_url} alt="" />
+          <div className="relative w-[200px] h-[150px]">
+            {/* <p className="text-white">{v.title}</p> */}
+            <img className="absolute" src={v.thumbnail_url} alt="" />
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
