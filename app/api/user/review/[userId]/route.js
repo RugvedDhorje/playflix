@@ -1,20 +1,18 @@
 import { supabaseAdmin } from "../../../../../utils/supabaseClient";
 
 export async function GET(request, { params }) {
-  const { genreId } = params;
-
+  const { userId } = params;
   try {
     const { data, error } = await supabaseAdmin
-      .from("videos")
+      .from("users")
       .select("*")
-      .filter("genre_ids", "cs", `{${genreId}}`);
-
+      .eq("id", userId)
+      .single();
     if (error) {
       return Response.json({ error: error.message }, { status: 400 });
     }
-
     return Response.json(data);
   } catch (error) {
-    return Response.json({ error: "Internal server error" }, { status: 500 });
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

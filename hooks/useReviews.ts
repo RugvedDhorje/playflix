@@ -24,11 +24,11 @@ export const useReviews = () => {
   return { loading, reviews, error, refetch: fetchReview };
 };
 
-export const useReviewById = (videoId: number | null) => {
+export const useReviewById = (videoId: string | null) => {
   const [review, setReview] = useState<review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const fetchReviewByVideo = async (id: number) => {
+  const fetchReviewByVideo = async (id: string) => {
     try {
       setLoading(true);
       const response = await fetch(`/api/reviews/videos/${id}`);

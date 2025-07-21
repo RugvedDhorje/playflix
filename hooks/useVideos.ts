@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { Video, WatchHistoryItem } from "@/types/video";
 
 // export const useVideos = () => {
@@ -78,15 +78,15 @@ export const useVideos = () => {
 //   return { videos, loading, error, fetchVideosByGenre };
 // };
 
-export const useVideoByGenre = (genreId: number | null) => {
-  const [videos, setVideos] = useState<Video[]>([]);
+export const useVideoById = (VideoId: string | null) => {
+  const [videos, setVideos] = useState<Video | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, SetError] = useState<string | null>(null);
 
-  const fetchVideosByGenre = async (id: number) => {
+  const fetchVideosByVideoId = async (id: string) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/videos/genre/${id}`);
+      const response = await fetch(`/api/videos/${id}`);
       if (!response.ok) throw new Error("Failed to fetch the videos");
       const data = await response.json();
       setVideos(data);
@@ -97,12 +97,22 @@ export const useVideoByGenre = (genreId: number | null) => {
     }
   };
   useEffect(() => {
-    if (genreId) {
-      fetchVideosByGenre(genreId);
+    if (VideoId) {
+      fetchVideosByVideoId(VideoId);
     }
-  }, [genreId]);
-  return { videos, loading, error, fetchVideosByGenre };
+  }, [VideoId]);
+  return { videos, loading, error, fetchVideosByVideoId };
 };
+
+// export const useVideoById = (videoId: number | null) => {
+//   const [video, setVideo] = useState<Video[]>([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+//   const fetchVideoById = async (id:number)=>{
+//     setLoading(true);
+//     const response = await fetch(`api/videos/`)
+//   }
+// };
 
 export const useWatchHistory = (userId: string | null) => {
   const [history, setHistory] = useState<WatchHistoryItem[]>([]);

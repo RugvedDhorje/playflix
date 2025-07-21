@@ -1,17 +1,21 @@
-import { supabaseAdmin } from "../../../../../utils/supabaseClient";
+import { supabaseAdmin } from "@/utils/supabaseClient";
 
 export async function GET(request, { params }) {
   const { videoId } = params;
+
   try {
     const { data, error } = await supabaseAdmin
-      .from("reviews")
+      .from("videos")
       .select("*")
-      .eq("video_id", videoId);
+      .eq("id", videoId)
+      .single();
+
     if (error) {
       return Response.json({ error: error.message }, { status: 400 });
     }
+
     return Response.json(data);
   } catch (error) {
-    return Response.json({ error: "Internal Server Error" }, { status: 500 });
+    return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }

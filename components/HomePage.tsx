@@ -4,6 +4,7 @@ import { useVideos } from "@/hooks/useVideos";
 import { supabaseAdmin } from "@/utils/supabaseClient";
 import { useEffect, useState } from "react";
 import { Bookmark, Play } from "lucide-react";
+import MoviesList from "./MoviesList";
 
 interface userProfile {
   id: string;
@@ -72,7 +73,7 @@ const HomePage = () => {
             </div>
             <div className="flex items-center gap-x-3">
               <div>
-                <p className="text-[20px] font-light text-white">
+                <p className="text-[20px] font-light text-white bg-gradient-to-t from-black to-transparent px-2 rounded-full">
                   {userProfile?.name}
                 </p>
               </div>
@@ -81,7 +82,7 @@ const HomePage = () => {
               </div>
               <button
                 onClick={handleSignOut}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-[18px] font-medium"
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-[18px] font-medium"
               >
                 SignOut
               </button>
@@ -100,9 +101,15 @@ const HomePage = () => {
             <span className="text-[30px]">•</span>
             <p className="text-[20px] font-medium">{videos[1]?.language}</p>
             <span className="text-[30px]">•</span>
-            <p className="text-[20px] font-medium">{videos[1]?.duration}</p>
+            <p className="text-[20px] font-medium">
+              {" "}
+              {videos[1]?.duration &&
+                `${Math.floor(videos[1].duration / 60)}h ${
+                  videos[1].duration % 60
+                }m`}
+            </p>
           </div>
-          <div className="text-white py-4">
+          <div className="text-white py-4 max-w-2xl">
             <p className="text-[20px]">{videos[1]?.description}</p>
           </div>
           <div className="flex gap-x-4 text-[20px] font-medium">
@@ -113,27 +120,17 @@ const HomePage = () => {
             ))}
           </div>
           <div className="flex gap-x-5 py-5">
-            <button className="text-white bg-red-600 rounded-md px-3 py-2 text-[20px] flex items-center justify-center gap-x-1">
+            <button className="text-white bg-red-600 hover:text-red-600 hover:bg-white duration-300  rounded-full px-4 py-2 text-[20px] flex items-center justify-center gap-x-1">
               <Play />
               PLAY NOW
             </button>
-            <button className="text-white border-[1px] border-white rounded-md px-3 py-2 flex items-center gap-x-1">
+            <button className="text-white border-[1px] border-white rounded-full text-[20px] px-4 py-2 flex items-center gap-x-1 hover:bg-white hover:text-black transition duration-300">
               <Bookmark /> WATCH LATER
             </button>
           </div>
         </div>
       </nav>
-      {/* <div> */}
-      {/* <h4 className="text-white text-[26px]">Recommended</h4> */}
-      {/* </div> */}
-      <div className="flex">
-        {videos.map((v) => (
-          <div className="relative w-[200px] h-[150px]">
-            {/* <p className="text-white">{v.title}</p> */}
-            <img className="absolute" src={v.thumbnail_url} alt="" />
-          </div>
-        ))}
-      </div>
+      <MoviesList videos={videos} title="Recommended" />
     </div>
   );
 };
