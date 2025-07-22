@@ -3,7 +3,7 @@ import { supabaseAdmin } from "../../../utils/supabaseClient";
 export async function POST(request) {
   try {
     const { user_id, video_id, rating, review_text } = await request.json();
-    if (user_id || video_id || review_text) {
+    if (!user_id || !video_id || !review_text) {
       return Response.json({ error: "Fill all the Fields" }, { status: 400 });
     }
     if (rating < 1 || rating > 10) {
@@ -46,7 +46,7 @@ export async function POST(request) {
     }
     const { data: review, error: reviewError } = await supabaseAdmin
       .from("reviews")
-      .insert([user_id, video_id, rating, review_text])
+      .insert([{ user_id, video_id, rating, review_text }])
       .select(`*,users:user_id(id,name)`)
       .single();
     if (reviewError) {
@@ -70,7 +70,7 @@ export async function POST(request) {
         }
       );
     }
-    Response.json(
+    return Response.json(
       {
         message: "Review Created Successfully!",
         review,
@@ -78,7 +78,7 @@ export async function POST(request) {
       { status: 200 }
     );
   } catch (error) {
-    Response.json(
+    return Response.json(
       {
         error: "Internal server error",
       },

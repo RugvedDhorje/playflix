@@ -4,4 +4,5 @@ export interface review {
   video_id: number;
   rating: number;
   review_text: string;
+  created_at: string;
 }

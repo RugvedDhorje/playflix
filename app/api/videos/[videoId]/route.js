@@ -1,7 +1,7 @@
 import { supabaseAdmin } from "@/utils/supabaseClient";
 
 export async function GET(request, { params }) {
-  const { videoId } = params;
+  const { videoId } = await params;
 
   try {
     const { data, error } = await supabaseAdmin

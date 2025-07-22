@@ -4,11 +4,11 @@ import React from "react";
 
 const ReviewUser = ({ id }: { id: string | null }) => {
   const { user } = useUserById(id);
-  console.log(id);
-  console.log("username:", user);
+  // console.log("Reviewuser", id);
+  // console.log("username:", user);
   return (
-    <div>
-      <h4 className="text-white text-[18px]">{user?.name}</h4>
+    <div className="">
+      <h4 className="text-gray-300 text-[24px]">{user?.name}</h4>
     </div>
   );
 };

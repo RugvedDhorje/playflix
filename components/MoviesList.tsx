@@ -10,11 +10,11 @@ const MoviesList = ({ videos, title }: { videos: Video[]; title: string }) => {
   };
 
   return (
-    <div>
+    <div className="max-w-screen-2xl mx-auto p-3">
       <div>
-        <h4 className="text-white text-[26px]">{title}</h4>
+        <h4 className="text-white text-[26px] font-semibold">{title}</h4>
       </div>
-      <div className="flex gap-4 overflow-x-auto p-4">
+      <div className="flex gap-x-2 overflow-x-auto py-2 overflow-y-scroll no-scrollbar">
         {videos?.map((v) => (
           <div
             key={v.id}
@@ -24,7 +24,7 @@ const MoviesList = ({ videos, title }: { videos: Video[]; title: string }) => {
             {/* Cropped Image Container */}
             <div className="w-full h-[240px] overflow-hidden rounded-md">
               <img
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center hover:scale-105 duration-300"
                 src={v.thumbnail_url}
                 alt={v.title}
               />

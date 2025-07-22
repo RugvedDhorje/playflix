@@ -5,22 +5,23 @@ import React from "react";
 import { Play } from "lucide-react";
 // import { useReviewById } from "@/hooks/useReviews";
 import Reviews from "@/components/Reviews";
+import Link from "next/link";
 
 const VideoPage = () => {
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id ?? null;
   const { videos, loading, error } = useVideoById(id);
   // const { review } = useReviewById(id);
-  // if (loading) {
-  //   return (
-  //     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-  //       <div className="text-center">
-  //         <div className="rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
-  //         <p className="mt-4 text-gray-600">Loading Profile...</p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (videos == null) {
+    return (
+      <div className="min-h-screen bg-[#0d0f11] flex items-center justify-center">
+        <div className="text-center">
+          <div className="rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading Profile...</p>
+        </div>
+      </div>
+    );
+  }
   console.log(videos?.title);
   console.log(id);
   return (
@@ -29,7 +30,9 @@ const VideoPage = () => {
         <div className=" max-w-screen-2xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center w-[200px]">
-              <img src="/images/logo.png" alt="" />
+              <Link href="/">
+                <img src="/images/logo.png" alt="Playflix Logo" />
+              </Link>
             </div>
           </div>
         </div>
@@ -66,7 +69,7 @@ const VideoPage = () => {
             ))}
           </div>
           <div className="flex gap-x-5 py-5">
-            <button className="text-black bg-white rounded-full px-3 py-2 text-[20px] flex items-center justify-center gap-x-1">
+            <button className="text-black bg-white rounded-full px-4 py-3 font-medium text-[16px] flex items-center justify-center gap-x-1">
               <Play />
               PLAY NOW
             </button>
@@ -83,7 +86,7 @@ const VideoPage = () => {
           />
         </div>
       </div>
-      {id && <Reviews id={id} />}
+      {id && <Reviews id={id} videoId={videos?.id} />}
     </div>
   );
 };
