@@ -21,7 +21,7 @@ const WatchHistoryList = () => {
       <div className="flex gap-x-2 overflow-x-auto py-2 overflow-y-scroll no-scrollbar">
         {watchHistory?.map((v) => (
           <div
-            key={v.video.id}
+            key={v.id}
             className="relative w-[180px] h-[240px] bg-white rounded-md shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300 flex-shrink-0"
             onClick={() => handleVideoClick(v.video.id)}
           >

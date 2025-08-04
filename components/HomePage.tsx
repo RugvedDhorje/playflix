@@ -8,6 +8,7 @@ import MoviesList from "./MoviesList";
 import Link from "next/link";
 import { useWatchHistoryById } from "@/hooks/useWatchHistory";
 import WatchHistoryList from "./WatchHirtoryList";
+import Top10Movies from "./Top10Movies";
 
 interface userProfile {
   id: string;
@@ -137,6 +138,7 @@ const HomePage = () => {
       </nav>
       <WatchHistoryList/>
       <MoviesList videos={videos} title="Recommended" />
+      <Top10Movies/>
     </div>
   );
 };

@@ -24,7 +24,7 @@ const MoviesList = ({ videos, title }: { videos: Video[]; title: string }) => {
         <h4 className="text-white text-[26px] font-semibold">{title}</h4>
       </div>
       <div className="flex gap-x-2 overflow-x-auto py-2 overflow-y-scroll no-scrollbar">
-        {videos?.map((v) => (
+        {videos?.slice(15,35).map((v) => (
           <div
             key={v.id}
             className="relative w-[180px] h-[240px] bg-white rounded-md shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300 flex-shrink-0"
