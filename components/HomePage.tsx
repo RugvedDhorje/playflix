@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { Bookmark, Play } from "lucide-react";
 import MoviesList from "./MoviesList";
 import Link from "next/link";
+import { useWatchHistoryById } from "@/hooks/useWatchHistory";
+import WatchHistoryList from "./WatchHirtoryList";
 
 interface userProfile {
   id: string;
@@ -17,7 +19,8 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState<userProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const { videos } = useVideos();
-  console.log(user?.id);
+  // console.log("watch :" ,watchHistory);
+
   useEffect(() => {
     if (user?.id) {
       fetchUserProfile();
@@ -132,6 +135,7 @@ const HomePage = () => {
           </div>
         </div>
       </nav>
+      <WatchHistoryList/>
       <MoviesList videos={videos} title="Recommended" />
     </div>
   );

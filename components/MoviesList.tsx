@@ -1,16 +1,25 @@
+import { useAuth } from "@/context/AuthContext";
+import { useWatchHistoryPost } from "@/hooks/useWatchHistory";
 import { Video } from "@/types/video";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 const MoviesList = ({ videos, title }: { videos: Video[]; title: string }) => {
   const router = useRouter();
+  const {user} = useAuth()
+  const {addHistory} = useWatchHistoryPost();
 
-  const handleVideoClick = (id: string | number): void => {
-    router.push(`/video/${id}`); // adjust the route as needed
-  };
+  const handleVideoClick = (id: string): void => {
+  if (!user?.id) return;
+
+  addHistory({ user_id: user.id, video_id: id }); // ✅ Correct object format
+  router.push(`/video/${id}`);
+};
+
+
 
   return (
-    <div className="max-w-screen-2xl mx-auto p-3">
+    <div className="max-w-screen-2xl mx-auto p-5">
       <div>
         <h4 className="text-white text-[26px] font-semibold">{title}</h4>
       </div>

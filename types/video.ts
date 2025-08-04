@@ -21,3 +21,13 @@ export interface Genre {
   id: number;
   name: string;
 }
+export type WatchHistory = {
+  id: string;
+  watched_at: string;
+  video: {
+    id: string;
+    url: string;
+    title: string;
+    thumbnail_url: string;
+  };
+};

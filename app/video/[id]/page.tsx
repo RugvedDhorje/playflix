@@ -6,6 +6,7 @@ import { Play } from "lucide-react";
 // import { useReviewById } from "@/hooks/useReviews";
 import Reviews from "@/components/Reviews";
 import Link from "next/link";
+import PlayButton from "@/components/PlayButton";
 
 const VideoPage = () => {
   const params = useParams();
@@ -68,15 +69,7 @@ const VideoPage = () => {
               </p>
             ))}
           </div>
-          <div className="flex gap-x-5 py-5">
-            <button className="text-black bg-white rounded-full px-4 py-3 font-medium text-[16px] flex items-center justify-center gap-x-1">
-              <Play />
-              PLAY NOW
-            </button>
-            {/* <button className="text-white border-[1px] border-white rounded-md px-3 py-2 flex items-center gap-x-1">
-              <Bookmark /> WATCH LATER
-            </button> */}
-          </div>
+          <PlayButton videoId={videos?.id} />
         </div>
         <div className="relative w-1/2">
           <img
