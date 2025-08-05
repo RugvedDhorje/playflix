@@ -79,7 +79,7 @@ const HomePage = () => {
             </div>
             <div className="flex items-center gap-x-3">
               <div>
-                <p className="text-[20px] font-light text-white bg-gradient-to-t from-[#0d0f11] to-transparent px-2 rounded-full">
+                <p className="text-[20px] font-light text-white bg-gradient-to-t from-[#0d0f11] to-transparent px-4 py-1 rounded-full">
                   {userProfile?.name}
                 </p>
               </div>

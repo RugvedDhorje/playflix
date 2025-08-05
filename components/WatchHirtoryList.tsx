@@ -6,8 +6,8 @@ import React from "react";
 
 const WatchHistoryList = () => {
   const router = useRouter();
-    const { user} = useAuth();
-  const {watchHistory,lodaing,error} = useWatchHistoryById(user!.id);
+  const { user } = useAuth();
+  const { watchHistory, lodaing, error } = useWatchHistoryById(user!.id);
 
   const handleVideoClick = (id: string | number): void => {
     router.push(`/video/${id}`); // adjust the route as needed
