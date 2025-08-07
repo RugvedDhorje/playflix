@@ -23,7 +23,7 @@ const ReviewPost = ({ videoId }: { videoId: string }) => {
 
   return (
     <div className="bg-black/20 backdrop-blur-md text-white max-w-screen-lg p-5 mx-auto rounded-xl shadow-lg mt-8">
-      <h2 className="text-2xl font-semibold mb-4">Write a Review</h2>
+      <h2 className="text-[24px] font-semibold mb-4">Write a Review</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -59,7 +59,7 @@ const ReviewPost = ({ videoId }: { videoId: string }) => {
             />
             <button
               type="submit"
-              className="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-md shadow hover:opacity-90 transition-all"
+              className="px-6 py-2 bg-gray-700 text-white rounded-md shadow hover:opacity-90 transition-all"
             >
               Submit Review
             </button>

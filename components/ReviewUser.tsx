@@ -8,7 +8,7 @@ const ReviewUser = ({ id }: { id: string | null }) => {
   // console.log("username:", user);
   return (
     <div className="">
-      <h4 className="text-gray-300 text-[24px]">{user?.name}</h4>
+      <h4 className="text-gray-300 md:text-[24px] text-[18px]">{user?.name}</h4>
     </div>
   );
 };
