@@ -72,7 +72,7 @@ const AuthForms = () => {
 
   return (
     <div className="min-h-screen bg-[#0d0f11]">
-      <nav className="relative h-[750px] bg-[#0d0f11] shadow overflow-hidden">
+      <nav className="relative h-[550px] md:h-[750px] bg-[#0d0f11] shadow overflow-hidden">
 
         <img
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -83,7 +83,7 @@ const AuthForms = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
         <div className=" relative max-w-screen-2xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            <div className="flex items-center w-[200px]">
+            <div className="flex items-center w-[120px] md:w-[200px]">
               <img src="/images/logo.png" alt="Playflix Logo" />
             </div>
 

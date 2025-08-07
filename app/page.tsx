@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/Footer";
 import HomePage from "@/components/HomePage";
 import ProtectedRoute from "@/components/ProtectedRoutes";
 // import { AuthProvider } from "@/context/AuthContext";
@@ -9,6 +10,7 @@ export default function Home() {
     <div>
       <ProtectedRoute>
         <HomePage />
+        <Footer/>
       </ProtectedRoute>
     </div>
   );

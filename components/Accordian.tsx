@@ -19,12 +19,12 @@ const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
         onClick={toggleAccordion}
       >
         <div className="flex justify-between items-center">
-          <span className="text-xl font-semibold">{title}</span>
+          <span className="sm:text-xl text-[18px] font-semibold">{title}</span>
           <span>{isOpen ? '▲' : '▼'}</span>
         </div>
       </button>
       {isOpen && (
-        <div className="pb-3 px-6 text-[16px]">
+        <div className="pb-3 px-6 md:text-[16px] text-[14px]">
           {children}
         </div>
       )}

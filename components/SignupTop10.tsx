@@ -33,7 +33,7 @@ const SignupTop10 = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-5 py-10">
       <div>
-        <h4 className="text-white text-[26px] font-semibold">{"Trending Now"}</h4>
+        <h4 className="text-white text-[24px] md:text-[26px] font-semibold">{"Trending Now"}</h4>
       </div>
       <div className="flex gap-x-2 overflow-x-auto py-2 overflow-y-scroll no-scrollbar">
         {videos?.slice(0, 10).map((v, index) => (
@@ -60,7 +60,7 @@ const SignupTop10 = () => {
         ))}
       </div>
       <div className="pt-10 pb-3">
-        <h4 className="text-white text-[26px] font-semibold">{"Frequently asked questions"}</h4>
+        <h4 className="text-white text-[20px] md:text-[26px] font-semibold">{"Frequently asked questions"}</h4>
       </div>
       <Accordion title="what is Playflix ?" children="Playflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices.
 You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!"/>

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Bookmark, Play } from "lucide-react";
 import MoviesList from "./MoviesList";
 import Link from "next/link";
-import { useWatchHistoryById } from "@/hooks/useWatchHistory";
+// import { useWatchHistoryById } from "@/hooks/useWatchHistory";
 import WatchHistoryList from "./WatchHirtoryList";
 import Top10Movies from "./Top10Movies";
 
@@ -61,7 +61,7 @@ const HomePage = () => {
   }
   return (
     <div className="min-h-screen bg-[#0d0f11]">
-      <nav className="relative h-[750px] bg-[#0d0f11] shadow overflow-hidden">
+      <nav className="relative h-[550px] md:h-[750px] bg-[#0d0f11] shadow overflow-hidden">
         <Link href="/">
           <img
             className="absolute top-0 left-0 w-full h-full object-cover"
@@ -74,40 +74,40 @@ const HomePage = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
         <div className=" relative max-w-screen-2xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            <div className="flex items-center w-[200px]">
+            <div className="flex items-center w-[100px] md:w-[200px]">
               <img src="/images/logo.png" alt="Playflix Logo" />
             </div>
-            <div className="flex items-center gap-x-3">
+            <div className="flex items-center md:gap-x-3 gap-x-1">
               <div>
-                <p className="text-[20px] font-light text-white bg-gradient-to-t from-[#0d0f11] to-transparent px-4 py-1 rounded-full">
+                <p className="md:text-[20px] text-[14px] font-light text-white bg-gradient-to-t from-[#0d0f11] to-transparent md:px-4 px-2 py-1 rounded-full">
                   {userProfile?.name}
                 </p>
               </div>
-              <div className="w-12">
+              <div className="md:w-12 w-8">
                 <img className="rounded-full" src="/images/user.png" alt="" />
               </div>
               <button
                 onClick={handleSignOut}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-[18px] font-medium"
+                className="bg-red-600 hover:bg-red-700 text-white md:px-4 md:py-2 px-2 py-1 rounded-full md:text-[18px] text-[14px] font-medium"
               >
                 SignOut
               </button>
             </div>
           </div>
-          <div className="text-white mt-[200px]">
-            <h1 className="text-white font-bold text-[60px]">
-              {videos[1]?.title}
+          <div className="text-white mt-[150px]">
+            <h1 className="text-white font-bold text-[40px] md:text-[60px]">
+              {"Severance"}
             </h1>
           </div>
           <div className="text-white flex items-center gap-x-3">
             {/* <p className="text-white text-[20px]">{review[1]?.id}</p> */}
             {/* <span className="text-[30px]">•</span> */}
 
-            <p className="font-medium text-[20px]">{videos[1]?.year}</p>
-            <span className="text-[30px]">•</span>
-            <p className="text-[20px] font-medium">{videos[1]?.language}</p>
-            <span className="text-[30px]">•</span>
-            <p className="text-[20px] font-medium">
+            <p className="font-medium md:text-[20px] text-[14px]">{"2022"}</p>
+            <span className="md:text-[30px] text-[20px]">•</span>
+            <p className="md:text-[20px] text-[14px] font-medium">{"English"}</p>
+            <span className="md:text-[30px] text-[20px]">•</span>
+            <p className="md:text-[20px] text-[14px] font-medium">
               {" "}
               {videos[1]?.duration &&
                 `${Math.floor(videos[1].duration / 60)}h ${
@@ -115,10 +115,10 @@ const HomePage = () => {
                 }m`}
             </p>
           </div>
-          <div className="text-white py-4 max-w-2xl">
-            <p className="text-[20px]">{videos[1]?.description}</p>
+          <div className="text-white md:py-4 py-2 max-w-2xl">
+            <p className="md:text-[20px] text-[14px]">{"Severance is a psychological sci-fi thriller series that explores the disturbing consequences of separating work and personal life through a surgical procedure."}</p>
           </div>
-          <div className="flex gap-x-4 text-[20px] font-medium">
+          <div className="flex gap-x-4 md:text-[20px] text-[14px] font-medium">
             {videos[1]?.genre_ids?.map((v, index) => (
               <p key={index} className="text-white">
                 {v} |
@@ -126,12 +126,12 @@ const HomePage = () => {
             ))}
           </div>
           <div className="flex gap-x-5 py-5">
-            <button className="text-white bg-red-600 hover:text-red-600 hover:bg-white duration-300  rounded-full px-5 py-3 text-[16px] flex items-center justify-center gap-x-1">
-              <Play />
+            <button className="text-white bg-red-600 hover:text-red-600 hover:bg-white duration-300  rounded-full md:px-5 px-3 md:py-3 py-1 md:text-[16px] text-[14px] flex items-center justify-center gap-x-1">
+              <Play className="w-4 md:w-5"/>
               PLAY NOW
             </button>
-            <button className="text-white border-[1px] border-white rounded-full text-[16px] px-5 py-3 flex items-center gap-x-1 hover:bg-white hover:text-black transition duration-300">
-              <Bookmark /> WATCH LATER
+            <button className="text-white border-[1px] border-white rounded-full md:px-5 px-3 md:py-3 py-1 md:text-[16px] text-[14px]  flex items-center gap-x-1 hover:bg-white hover:text-black transition duration-300">
+              <Bookmark className="w-4 md:w-5" /> WATCH LATER
             </button>
           </div>
         </div>

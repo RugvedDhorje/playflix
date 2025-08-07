@@ -21,7 +21,7 @@ const MoviesList = ({ videos, title }: { videos: Video[]; title: string }) => {
   return (
     <div className="max-w-screen-2xl mx-auto p-5">
       <div>
-        <h4 className="text-white text-[26px] font-semibold">{title}</h4>
+        <h4 className="text-white text-[24px] md:text-[26px] font-semibold">{title}</h4>
       </div>
       <div className="flex gap-x-2 overflow-x-auto py-2 overflow-y-scroll no-scrollbar">
         {videos?.slice(15,35).map((v) => (
