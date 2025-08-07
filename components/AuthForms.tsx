@@ -2,6 +2,7 @@
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 import SignupTop10 from "./SignupTop10";
+import Footer from "./Footer";
 // import { useAuth } from '../contexts/AuthContext'
 
 const AuthForms = () => {
@@ -90,7 +91,7 @@ const AuthForms = () => {
           </div>
           <div className="max-w-md w-full space-y-8 mx-auto">
 
-            <div className="mt-8 space-y-6 mx-auto bg-black/60 p-12">
+            <div className="mt-8 space-y-6 mx-auto bg-black/60 p-12 rounded-md">
               <h2 className=" text-center text-3xl font-extrabold text-gray-300">
                 {isLogin ? "Sign in " : "Create new account"}
               </h2>
@@ -181,6 +182,7 @@ const AuthForms = () => {
         </div>
       </nav>
       <SignupTop10/>
+      <Footer/>
     </div>
     
   );
