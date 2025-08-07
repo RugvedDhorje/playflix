@@ -174,6 +174,7 @@ const AuthForms = () => {
                     ? "Don't have an account? Sign up"
                     : "Already have an account? Sign in"}
                 </button>
+                <p className="text-gray-300 pt-2 text-[14px]">Email : johnhob25@gmail.com  pass : John@123</p>
               </div>
             </div>
 
